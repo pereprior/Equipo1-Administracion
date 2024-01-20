@@ -90,15 +90,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_feeljoy_root" name="Feeljoy" sequence="10"/>
-
-        <menuitem id="menu_feeljoy_eventos" name="Eventos" parent="menu_feeljoy_root" action="action_feeljoy_evento"
-                  sequence="30"/>
-        <menuitem id="menu_feeljoy_locales" name="Locales" parent="menu_feeljoy_root" action="action_feeljoy_local"
-                  sequence="10"/>
-        <menuitem id="menu_feeljoy_calidad_servicio" name="Calidad de Servicio" parent="menu_feeljoy_root"
-                  action="action_feeljoy_calidad_servicio" sequence="20"/>
-
         <record id="action_feeljoy_local" model="ir.actions.act_window">
             <field name="name">Locales</field>
             <field name="res_model">feeljoy.local</field>
@@ -116,6 +107,14 @@
             <field name="res_model">feeljoy.evento</field>
             <field name="view_mode">tree,form</field>
         </record>
+
+        <menuitem id="menu_feeljoy_root" name="Feeljoy" sequence="10"/>
+        <menuitem id="menu_feeljoy_eventos" name="Eventos" parent="menu_feeljoy_root" action="action_feeljoy_evento"
+                  sequence="30"/>
+        <menuitem id="menu_feeljoy_locales" name="Locales" parent="menu_feeljoy_root" action="action_feeljoy_local"
+                  sequence="10"/>
+        <menuitem id="menu_feeljoy_calidad_servicio" name="Calidad de Servicio" parent="menu_feeljoy_root"
+                  action="action_feeljoy_calidad_servicio" sequence="20"/>
 
     </data>
 </odoo>
