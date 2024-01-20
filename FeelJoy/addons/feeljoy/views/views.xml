@@ -1,0 +1,121 @@
+<odoo>
+    <data>
+        <record id="view_feeljoy_local_form" model="ir.ui.view">
+            <field name="name">feeljoy.local.form</field>
+            <field name="model">feeljoy.local</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="imagen"/>
+                        <field name="precioDia"/>
+                        <field name="comentarios"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_feeljoy_local_tree" model="ir.ui.view">
+            <field name="name">feeljoy.local.tree</field>
+            <field name="model">feeljoy.local</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="imagen" widget="image"/>
+                    <field name="precioDia"/>
+                    <field name="comentarios"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_feeljoy_calidad_servicio_form" model="ir.ui.view">
+            <field name="name">feeljoy.calidadServicio.form</field>
+            <field name="model">feeljoy.calidadservicio</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="porcentaje_aumento"/>
+                        <field name="comentarios"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_feeljoy_calidad_servicio_tree" model="ir.ui.view">
+            <field name="name">feeljoy.calidadservicio.tree</field>
+            <field name="model">feeljoy.calidadservicio</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="porcentaje_aumento"/>
+                    <field name="comentarios"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_feeljoy_evento_form" model="ir.ui.view">
+            <field name="name">feeljoy.evento.form</field>
+            <field name="model">feeljoy.evento</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="local_id"/>
+                        <field name="calidad_servicio_id"/>
+                        <field name="fecha"/>
+                        <field name="tipo_evento"/>
+                        <field name="precio_por_invitado"/>
+                        <field name="cantidad_invitados"/>
+                        <field name="total_price" readonly="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_feeljoy_evento_tree" model="ir.ui.view">
+            <field name="name">feeljoy.evento.tree</field>
+            <field name="model">feeljoy.evento</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="local_id"/>
+                    <field name="calidad_servicio_id"/>
+                    <field name="fecha"/>
+                    <field name="tipo_evento"/>
+                    <field name="precio_por_invitado"/>
+                    <field name="cantidad_invitados"/>
+                    <field name="total_price"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="menu_feeljoy_root" name="Feeljoy" sequence="10"/>
+
+        <menuitem id="menu_feeljoy_eventos" name="Eventos" parent="menu_feeljoy_root" action="action_feeljoy_evento"
+                  sequence="30"/>
+        <menuitem id="menu_feeljoy_locales" name="Locales" parent="menu_feeljoy_root" action="action_feeljoy_local"
+                  sequence="10"/>
+        <menuitem id="menu_feeljoy_calidad_servicio" name="Calidad de Servicio" parent="menu_feeljoy_root"
+                  action="action_feeljoy_calidad_servicio" sequence="20"/>
+
+        <record id="action_feeljoy_local" model="ir.actions.act_window">
+            <field name="name">Locales</field>
+            <field name="res_model">feeljoy.local</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_feeljoy_calidad_servicio" model="ir.actions.act_window">
+            <field name="name">Calidad de Servicio</field>
+            <field name="res_model">feeljoy.calidadservicio</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_feeljoy_evento" model="ir.actions.act_window">
+            <field name="name">Eventos</field>
+            <field name="res_model">feeljoy.evento</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<odoo>
+    <report
+            id="feeljoy.evento_report"
+            string="Informe de Evento"
+            model="feeljoy.evento"
+            report_type="qweb-pdf"
+            name="feeljoy.evento_report_view"
+            file="feeljoy.evento_report_view"
+    />
+
+    <template id="feeljoy.evento_report_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="evento">
+                <div class="page">
+                    <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">
+                        Presupuesto:
+                        <t t-esc="evento.name"/>
+                    </div>
+                    <div>
+                        <strong>Local:</strong>
+                        <span t-esc="evento.local_id.name"/>
+                    </div>
+                    <div>
+                        <strong>Calidad de Servicio:</strong>
+                        <span t-esc="evento.calidad_servicio_id.name"/>
+                    </div>
+                    <div>
+                        <strong>Fecha del Evento:</strong>
+                        <span t-esc="evento.fecha"/>
+                    </div>
+                    <div>
+                        <strong>Tipo de Evento:</strong>
+                        <span t-esc="evento.tipo_evento"/>
+                    </div>
+                    <div>
+                        <strong>Precio por Invitado:</strong>
+                        <span t-esc="evento.precio_por_invitado"/>
+                    </div>
+                    <div>
+                        <strong>Cantidad de Invitados:</strong>
+                        <span t-esc="evento.cantidad_invitados"/>
+                    </div>
+                    <div>
+                        <p>
+                            <strong>Precio Total:</strong>
+                            <span t-field="evento.total_price"/>
+                        </p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
