@@ -8,7 +8,7 @@ class Cliente(models.Model):
     _description = 'Cliente'
 
     # Campos básicos
-    nombre = fields.Char(string='Nombre', required=True)
+    name = fields.Char(string='Nombre', required=True)
     edad = fields.Integer(string='Edad')
     telefono = fields.Char(string='Teléfono')
     correo = fields.Char(string='Correo Electrónico')
@@ -29,6 +29,7 @@ class Cliente(models.Model):
         ('no_decirlo', 'Prefiero no decirlo'),
     ], string='Signo Zodiacal')
     gatos_favoritos = fields.Many2many('gatos.gato', string='Gatos Favoritos')
+    adopcion = fields.One2many('gatos.adopcion', 'cliente', string='Información de adopcion')
     
 class Gatos(models.Model):
     _name = 'gatos.gato'
@@ -41,6 +42,7 @@ class Gatos(models.Model):
     protectora = fields.Char(string="Protectora", help="Introduce la protectora que se hace cargo del gato")
     personalidad = fields.Char(string="Personalidad", help="Introduce la personalidad del gato")
     info_medica = fields.One2many('gatos.info_medica', 'gato', string='Información Medica')
+    adopcion = fields.One2many('gatos.adopcion', 'gato', string='Información de adopcion')
 
     cliente_id = fields.Many2one('gatos.cliente', string='Cliente')
 
@@ -49,7 +51,7 @@ class Info_Medica(models.Model):
     _description = 'Informacion medica'
 
     name = fields.Char(string="Nombre del tutor")
-    gato = fields.Many2one('gatos.gato', string='Gato', required=True)
+    gato = fields.Many2one('gatos.gato')
     peso = fields.Float(string="Peso", required=True)
     castrado = fields.Boolean(string="Esta castrado", required=True)
     enfermedad = fields.Text(string="Enfermedades u operaciones", required=True, help="Introduce algun tipo de enfermedad u operacion que haya pasado")
@@ -59,6 +61,7 @@ class Adopcion(models.Model):
     _name = 'gatos.adopcion'
     _description = 'Adopción'
 
+    gato = fields.Many2one('gatos.gato', string='Gato', required=True)
     cliente = fields.Many2one('gatos.cliente', string='Cliente', required=True)
     tipo_vivienda = fields.Selection([
     ('casa', 'Casa'),
