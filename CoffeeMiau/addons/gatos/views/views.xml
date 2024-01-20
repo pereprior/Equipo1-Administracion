@@ -12,6 +12,7 @@
                 <field name="correo"/>
                 <field name="foto" widget="image"/>
                 <field name="signo_zodiacal"/>
+                <field name="gatos_favoritos" widget="many2many_tags"/>
             </tree>
         </field>
       </record>
@@ -29,6 +30,7 @@
                     <field name="correo"/>
                     <field name="foto" widget="image"/>
                     <field name="signo_zodiacal"/>
+                    <field name="gatos_favoritos" widget="many2many_tags"/>
                 </group>
             </form>
         </field>
@@ -92,14 +94,12 @@
           </field>
       </record>
 
-
     <record id="action_gato" model="ir.actions.act_window">
         <field name="name">Gato</field>
         <field name="res_model">gatos.gato</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="CoffeeMiau" id="gatos.menu_root"/>
     <menuitem id="menu_gato" name="Gato" parent="gatos.menu_root" action="action_gato" />
   </data>
 </odoo>
