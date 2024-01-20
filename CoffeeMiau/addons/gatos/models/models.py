@@ -19,7 +19,7 @@ class Info_Medica(models.Model):
     _name = 'gatos.info_medica'
     _description = 'Informacion medica'
 
-    name = fields.Char(string="Info_Medica")
+    name = fields.Char(string="Nombre del tutor")
     gato = fields.Many2one('gatos.gato', string='Gato', required=True)
     peso = fields.Float(string="Peso", required=True)
     castrado = fields.Boolean(string="Esta castrado", required=True)
