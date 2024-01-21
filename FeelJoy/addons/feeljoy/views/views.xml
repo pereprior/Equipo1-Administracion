@@ -191,7 +191,7 @@
         </record>
 
         <record id="feeljoy.cliente_action_window" model="ir.actions.act_window">
-            <field name="name">feeljoy.cliente.action_window</field>
+            <field name="name">Clientes</field>
             <field name="res_model">feeljoy.cliente</field>
             <field name="view_mode">tree,form,kanban</field>
         </record>
