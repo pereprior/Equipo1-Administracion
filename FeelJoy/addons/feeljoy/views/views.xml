@@ -1,5 +1,8 @@
 <odoo>
     <data>
+
+        <!-- explicit list view definition -->
+        
         <record id="view_feeljoy_local_form" model="ir.ui.view">
             <field name="name">feeljoy.local.form</field>
             <field name="model">feeljoy.local</field>
@@ -90,6 +93,85 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="feeljoy.cliente_list">
+            <field name="name">feeljoy.cliente.list</field>
+            <field name="model">feeljoy.cliente</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nombre"/>
+                    <field name="apellidos"/>
+                    <field name="fecha_nacimiento"/>
+                    <field name="mail"/>
+                    <field name="telefono"/>
+                    <field name="descripcion"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="feeljoy.cliente_form" model="ir.ui.view">
+            <field name="name">feeljoy.cliente.form</field>
+            <field name="model">feeljoy.cliente</field>
+            <field name="arch" type="xml">
+                <form string="Nuevo CLiente">
+                    <sheet>
+                        <group colspan="2" col="2">
+                            <field name="foto_perfil" widget="image"></field>
+                            <field name="nombre"></field>
+                            <field name="apellidos"></field>
+                            <field name="fecha_nacimiento"></field>
+                            <field name="mail"></field>
+                            <field name="telefono"></field>
+                            <field name="descripcion"></field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="feeljoy.cliente_kanban" model="ir.ui.view">
+            <field name="name">feeljoy.cliente.kanban</field>
+            <field name="model">feeljoy.cliente</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-foreach="get_kanban_templates()" t-as="template">
+                            <t t-name="kanban-box">
+                                <div class="oe_kanban_content">
+                                    <div class="oe_kanban_global_click">
+                        
+                                        <div class="oe_kanban_image">
+                                            <field name="foto_perfil" widget="image"/>
+                                        </div>
+                                        
+                                        <div class="oe_kanban_details">
+                                        
+                                            <div class="oe_kanban_name">
+                                                <strong><field name="nombre"/></strong>
+                                                <strong><field name="apellidos" style="margin-left: 5px;"/></strong>
+                                            </div>
+
+                                            <div class="oe_kanban_mail">
+                                                <strong><label for="mail"/>Email: </strong>
+                                                <field name="mail" style="margin-left: 5px;"/>
+                                            </div>
+
+                                            <div class="oe_kanban_phone">
+                                                <strong><label for="telefono"/>Teléfono: </strong>
+                                                <field name="telefono" style="margin-left: 5px;"/>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </t>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
         <record id="action_feeljoy_local" model="ir.actions.act_window">
             <field name="name">Locales</field>
             <field name="res_model">feeljoy.local</field>
@@ -108,13 +190,39 @@
             <field name="view_mode">tree,form</field>
         </record>
 
+        <record id="feeljoy.cliente_action_window" model="ir.actions.act_window">
+            <field name="name">feeljoy.cliente.action_window</field>
+            <field name="res_model">feeljoy.cliente</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <!-- Top menu items -->
+
         <menuitem id="menu_feeljoy_root" name="Feeljoy" sequence="10"/>
-        <menuitem id="menu_feeljoy_eventos" name="Eventos" parent="menu_feeljoy_root" action="action_feeljoy_evento"
+
+        <menuitem id="feeljoy.cliente_menu"
+                  name="Cliente"
+                  parent="menu_feeljoy_root"
+                  action="feeljoy.cliente_action_window"
                   sequence="10"/>
-        <menuitem id="menu_feeljoy_locales" name="Locales" parent="menu_feeljoy_root" action="action_feeljoy_local"
+
+        <menuitem id="menu_feeljoy_eventos"
+                  name="Eventos" 
+                  parent="menu_feeljoy_root" 
+                  action="action_feeljoy_evento"
+                  sequence="10"/>
+        
+        <menuitem id="menu_feeljoy_locales" 
+                  name="Locales" 
+                  parent="menu_feeljoy_root" 
+                  action="action_feeljoy_local"
                   sequence="40"/>
-        <menuitem id="menu_feeljoy_calidad_servicio" name="Calidad de Servicio" parent="menu_feeljoy_root"
-                  action="action_feeljoy_calidad_servicio" sequence="70"/>
+
+        <menuitem id="menu_feeljoy_calidad_servicio" 
+                  name="Calidad de Servicio" 
+                  parent="menu_feeljoy_root"
+                  action="action_feeljoy_calidad_servicio" 
+                  sequence="70"/>
 
     </data>
 </odoo>

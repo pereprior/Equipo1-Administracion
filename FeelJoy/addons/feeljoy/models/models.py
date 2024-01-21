@@ -71,3 +71,28 @@ class FeeljoyEvento(models.Model):
             precio_con_descuento = precio_invitado - (precio_invitado * (descuento_por_cantidad / 100))
 
             evento.total_price = precio_lugar + (precio_con_descuento * evento.cantidad_invitados)
+            
+class feeljoy_cliente(models.Model):
+    _name = 'feeljoy.cliente'
+    _description = 'Cliente'
+
+    foto_perfil = fields.Binary("Foto de perfil")
+    nombre = fields.Char(string="Nombre", required=True, help="Introduce un nombre")
+    apellidos = fields.Char(string="Apellidos", required=True, help="Introduce los apellidos")
+    fecha_nacimiento = fields.Date(string="Fecha Nacimiento", required=True)
+    mail = fields.Char(string="Email", required=True, help="Introduce el correo electrónico")
+    telefono = fields.Char(string="Teléfono móvil", required=True, help="Número de teléfono")
+    descripcion = fields.Text(string="Sobre el cliente", required=False, help="Escribe aquí datos de interés del cliente")
+    
+    def get_kanban_templates(self):
+        templates = []
+        for cliente in self.search([]):
+            template = {
+                'foto_perfil': cliente.foto_perfil,
+                'nombre': cliente.nombre,
+                'apellidos': cliente.apellidos,
+                'mail' : cliente.mail,
+                'telefono' : cliente.telefono
+            }
+            templates.append(template)
+        return templates
