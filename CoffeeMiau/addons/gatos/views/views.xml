@@ -6,7 +6,7 @@
         <field name="model">gatos.cliente</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="nombre"/>
+                <field name="name"/>
                 <field name="edad"/>
                 <field name="telefono"/>
                 <field name="correo"/>
@@ -24,36 +24,18 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="nombre"/>
+                    <field name="name"/>
                     <field name="edad"/>
                     <field name="telefono"/>
                     <field name="correo"/>
                     <field name="foto" widget="image"/>
                     <field name="signo_zodiacal"/>
                     <field name="gatos_favoritos" widget="many2many_tags"/>
+                    <field name="adopcion"/>
                 </group>
             </form>
         </field>
     </record>
-
-   <!-- Vistas de Gato -->
-      <record id="view_gato_form" model="ir.ui.view">
-          <field name="name">gato.form</field>
-          <field name="model">gatos.gato</field>
-          <field name="arch" type="xml">
-              <form>
-                  <group>
-                      <field name="name"/>
-                      <field name="foto" widget="image"/>
-                      <field name="edad"/>
-                      <field name="raza"/>
-                      <field name="protectora"/>
-                      <field name="personalidad"/>
-                      <field name="info_medica"/>
-                  </group>
-              </form>
-          </field>
-      </record>
 
       <!-- Acción para abrir la vista Tree -->
       <record id="action_cliente" model="ir.actions.act_window">
@@ -65,6 +47,58 @@
       <!-- Menú CoffeeMiau con Submenú Cliente -->
       <menuitem id="gatos.menu_root" name="CoffeeMiau"/>
       <menuitem id="menu_cliente" name="Cliente" parent="gatos.menu_root" action="action_cliente"/>
+
+      <!-- Vistas de Gato -->
+      <record id="view_gato_form" model="ir.ui.view">
+          <field name="name">gato.form</field>
+          <field name="model">gatos.gato</field>
+          <field name="arch" type="xml">
+              <form>
+                  <group>
+                      <field name="name"/>
+                      <field name="foto" widget="image"/>
+                  </group>
+                  <group>
+                      <field name="edad"/>
+                      <field name="raza"/>
+                      <field name="protectora"/>
+                      <field name="personalidad"/>
+                      <field name="info_medica"/>
+                      <field name="adopcion"/>
+                  </group>
+              </form>
+          </field>
+      </record>
+
+      <record id="view_info_medica_form" model="ir.ui.view">
+          <field name="name">info_medica.form</field>
+          <field name="model">gatos.info_medica</field>
+          <field name="arch" type="xml">
+              <form>
+                  <group>
+                      <field name="peso"/>
+                      <field name="castrado"/>
+                      <field name="enfermedad"/>
+                      <field name="otros"/>
+                  </group>
+              </form>
+          </field>
+      </record>
+
+      <record id="view_adopcion_gatos_form" model="ir.ui.view">
+          <field name="name">adopcion.form</field>
+          <field name="model">gatos.adopcion</field>
+          <field name="arch" type="xml">
+              <form>
+                  <group>
+                      <field name="gato"/>
+                      <field name="cliente"/>
+                      <field name="tipo_vivienda"/>
+                      <field name="mascotas_previas"/>
+                  </group>
+              </form>
+          </field>
+      </record>
 
       <record id="view_gato_tree" model="ir.ui.view">
           <field name="name">gato.tree</field>
@@ -85,11 +119,23 @@
           <field name="model">gatos.info_medica</field>
           <field name="arch" type="xml">
               <tree>
-                  <field name="name"/>
                   <field name="peso"/>
                   <field name="castrado"/>
                   <field name="enfermedad"/>
                   <field name="otros"/>
+              </tree>
+          </field>
+      </record>
+
+      <record id="view_adopcion_tree" model="ir.ui.view">
+          <field name="name">adopcion.tree</field>
+          <field name="model">gatos.adopcion</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="gato"/>
+                  <field name="cliente"/>
+                  <field name="tipo_vivienda"/>
+                  <field name="mascotas_previas"/>
               </tree>
           </field>
       </record>
@@ -100,6 +146,13 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="action_adopcion" model="ir.actions.act_window">
+        <field name="name">Adopcion</field>
+        <field name="res_model">gatos.adopcion</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <menuitem id="menu_gato" name="Gato" parent="gatos.menu_root" action="action_gato" />
+    <menuitem id="menu_adopcion" name="Adopcion" parent="gatos.menu_root" action="action_adopcion" />
   </data>
 </odoo>
