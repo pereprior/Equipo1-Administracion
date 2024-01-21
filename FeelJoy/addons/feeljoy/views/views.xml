@@ -2,7 +2,7 @@
     <data>
 
         <!-- explicit list view definition -->
-        
+
         <record id="view_feeljoy_local_form" model="ir.ui.view">
             <field name="name">feeljoy.local.form</field>
             <field name="model">feeljoy.local</field>
@@ -64,6 +64,7 @@
                 <form>
                     <group>
                         <field name="name"/>
+                        <field name="cliente"/>
                         <field name="local_id"/>
                         <field name="calidad_servicio_id"/>
                         <field name="fecha"/>
@@ -82,6 +83,7 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
+                    <field name="cliente"/>
                     <field name="local_id"/>
                     <field name="calidad_servicio_id"/>
                     <field name="fecha"/>
@@ -138,25 +140,31 @@
                             <t t-name="kanban-box">
                                 <div class="oe_kanban_content">
                                     <div class="oe_kanban_global_click">
-                        
+
                                         <div class="oe_kanban_image">
                                             <field name="foto_perfil" widget="image"/>
                                         </div>
-                                        
+
                                         <div class="oe_kanban_details">
-                                        
+
                                             <div class="oe_kanban_name">
-                                                <strong><field name="nombre"/></strong>
-                                                <strong><field name="apellidos" style="margin-left: 5px;"/></strong>
+                                                <strong>
+                                                    <field name="nombre"/>
+                                                </strong>
+                                                <strong>
+                                                    <field name="apellidos" style="margin-left: 5px;"/>
+                                                </strong>
                                             </div>
 
                                             <div class="oe_kanban_mail">
-                                                <strong><label for="mail"/>Email: </strong>
+                                                <strong><label for="mail"/>Email:
+                                                </strong>
                                                 <field name="mail" style="margin-left: 5px;"/>
                                             </div>
 
                                             <div class="oe_kanban_phone">
-                                                <strong><label for="telefono"/>Teléfono: </strong>
+                                                <strong><label for="telefono"/>Teléfono:
+                                                </strong>
                                                 <field name="telefono" style="margin-left: 5px;"/>
                                             </div>
                                         </div>
@@ -191,7 +199,7 @@
         </record>
 
         <record id="feeljoy.cliente_action_window" model="ir.actions.act_window">
-            <field name="name">feeljoy.cliente.action_window</field>
+            <field name="name">Clientes</field>
             <field name="res_model">feeljoy.cliente</field>
             <field name="view_mode">tree,form,kanban</field>
         </record>
@@ -207,21 +215,21 @@
                   sequence="10"/>
 
         <menuitem id="menu_feeljoy_eventos"
-                  name="Eventos" 
-                  parent="menu_feeljoy_root" 
+                  name="Eventos"
+                  parent="menu_feeljoy_root"
                   action="action_feeljoy_evento"
-                  sequence="10"/>
-        
-        <menuitem id="menu_feeljoy_locales" 
-                  name="Locales" 
-                  parent="menu_feeljoy_root" 
+                  sequence="20"/>
+
+        <menuitem id="menu_feeljoy_locales"
+                  name="Locales"
+                  parent="menu_feeljoy_root"
                   action="action_feeljoy_local"
                   sequence="40"/>
 
-        <menuitem id="menu_feeljoy_calidad_servicio" 
-                  name="Calidad de Servicio" 
+        <menuitem id="menu_feeljoy_calidad_servicio"
+                  name="Calidad de Servicio"
                   parent="menu_feeljoy_root"
-                  action="action_feeljoy_calidad_servicio" 
+                  action="action_feeljoy_calidad_servicio"
                   sequence="70"/>
 
     </data>

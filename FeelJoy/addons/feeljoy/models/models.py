@@ -28,6 +28,7 @@ class FeeljoyEvento(models.Model):
     _description = 'evento'
 
     name = fields.Char(string='Presupuesto para...')
+    cliente =fields.Many2one('feeljoy.cliente', 'Cliente', required=True)
     local_id = fields.Many2one('feeljoy.local', string='Local', required=True)
     calidad_servicio_id = fields.Many2one('feeljoy.calidadservicio', string='Calidad de Servicio', required=True)
     fecha = fields.Date(string='Fecha del Evento', required=True)

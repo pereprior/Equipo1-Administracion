@@ -22,6 +22,11 @@
                         <span t-esc="evento.local_id.name"/>
                     </div>
                     <div>
+                        <strong>Cliente:</strong>
+                        <span t-esc="evento.cliente.nombre"/>
+                        <span t-esc="evento.cliente.apellidos"/>
+                    </div>
+                    <div>
                         <strong>Calidad de Servicio:</strong>
                         <span t-esc="evento.calidad_servicio_id.name"/>
                     </div>
