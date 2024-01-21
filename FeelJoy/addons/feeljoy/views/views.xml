@@ -110,11 +110,11 @@
 
         <menuitem id="menu_feeljoy_root" name="Feeljoy" sequence="10"/>
         <menuitem id="menu_feeljoy_eventos" name="Eventos" parent="menu_feeljoy_root" action="action_feeljoy_evento"
-                  sequence="30"/>
-        <menuitem id="menu_feeljoy_locales" name="Locales" parent="menu_feeljoy_root" action="action_feeljoy_local"
                   sequence="10"/>
+        <menuitem id="menu_feeljoy_locales" name="Locales" parent="menu_feeljoy_root" action="action_feeljoy_local"
+                  sequence="40"/>
         <menuitem id="menu_feeljoy_calidad_servicio" name="Calidad de Servicio" parent="menu_feeljoy_root"
-                  action="action_feeljoy_calidad_servicio" sequence="20"/>
+                  action="action_feeljoy_calidad_servicio" sequence="70"/>
 
     </data>
 </odoo>
