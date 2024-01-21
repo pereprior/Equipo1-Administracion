@@ -1,0 +1,39 @@
+<odoo>
+
+    <report
+        id="gatos.informe_adopcion"
+        string="Informe de Adopción"
+        model="gatos.adopcion"
+        report_type="qweb-pdf"
+        name="gatos.informe_adopcion_view"
+        file="gatos.informe_adopcion_view"
+    />
+
+    <template id="informe_adopcion_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="adopcion">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div>
+                            <strong>Gato:</strong>
+                            <span t-field="adopcion.gato" />
+                        </div>
+                        <div>
+                            <strong>Cliente:</strong>
+                            <span t-field="adopcion.cliente" />
+                        </div>
+                        <div>
+                            <strong>Tipo de Vivienda:</strong>
+                            <span t-field="adopcion.tipo_vivienda" />
+                        </div>
+                        <div>
+                            <strong>Mascotas previas:</strong>
+                            <span t-field="adopcion.mascotas_previas" />
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
