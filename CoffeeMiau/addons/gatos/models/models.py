@@ -30,7 +30,8 @@ class Cliente(models.Model):
     ], string='Signo Zodiacal')
     gatos_favoritos = fields.Many2many('gatos.gato', string='Gatos Favoritos')
     adopcion = fields.One2many('gatos.adopcion', 'cliente', string='Información de adopcion')
-    
+
+
 class Gatos(models.Model):
     _name = 'gatos.gato'
     _description = 'Gatos'
@@ -46,6 +47,7 @@ class Gatos(models.Model):
 
     cliente_id = fields.Many2one('gatos.cliente', string='Cliente')
 
+
 class Info_Medica(models.Model):
     _name = 'gatos.info_medica'
     _description = 'Informacion medica'
@@ -54,8 +56,10 @@ class Info_Medica(models.Model):
     gato = fields.Many2one('gatos.gato')
     peso = fields.Float(string="Peso", required=True)
     castrado = fields.Boolean(string="Esta castrado", required=True)
-    enfermedad = fields.Text(string="Enfermedades u operaciones", required=True, help="Introduce algun tipo de enfermedad u operacion que haya pasado")
+    enfermedad = fields.Text(string="Enfermedades u operaciones", required=True,
+                             help="Introduce algun tipo de enfermedad u operacion que haya pasado")
     otros = fields.Text(string="Informacion adicional", required=True, help="Introduce informacion adicional relevante")
+
 
 class Adopcion(models.Model):
     _name = 'gatos.adopcion'
@@ -64,14 +68,14 @@ class Adopcion(models.Model):
     gato = fields.Many2one('gatos.gato', string='Gato', required=True)
     cliente = fields.Many2one('gatos.cliente', string='Cliente', required=True)
     tipo_vivienda = fields.Selection([
-    ('casa', 'Casa'),
-    ('piso', 'Piso'),
-    ('apartamento', 'Apartamento'),
-    ('chalet', 'Chalet'),
-    ('duplex', 'Dúplex'),
-    ('atico', 'Ático'),
-    ('casa_rural', 'Casa Rural'),
-    ('otro', 'Otro'),
+        ('casa', 'Casa'),
+        ('piso', 'Piso'),
+        ('apartamento', 'Apartamento'),
+        ('chalet', 'Chalet'),
+        ('duplex', 'Dúplex'),
+        ('atico', 'Ático'),
+        ('casa_rural', 'Casa Rural'),
+        ('otro', 'Otro'),
     ], string='Tipo de Vivienda', required=True)
     mascotas_previas = fields.Selection([
         ('si_gatos', 'Sí, Gatos'),
