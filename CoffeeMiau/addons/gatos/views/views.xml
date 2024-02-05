@@ -43,13 +43,24 @@
           <field name="model">gatos.cliente</field>
           <field name="arch" type="xml">
               <graph string="Gráfico Clientes">
-                <field name="name"/>
-                <field name="edad" string="Edad"/>
-                <field name="signo_zodiacal" string="Signo del Zodiaco"/>
-                <field name="adopcion" type="measure" string="Adopciones"/>
+                <field name="name" type="row"/>
+                <field name="edad" type="row" invisible="false"/>
+                <field name="signo_zodiacal" type="row" invisible="false"/>
+                <field name="adopcion" type="row" invisible="false"/>
               </graph>
           </field>
       </record>
+
+      <!--<record id="view_cliente_graph2" model="ir.ui.view">
+          <field name="name">cliente.graph2</field>
+          <field name="model">gatos.cliente</field>
+          <field name="arch" type="xml">
+              <graph string="Gráfico Clientes 2">
+                <field name="name" type="row"/>
+                <field name="signo_zodiacal" type="measure" invisible="false"/>
+              </graph>
+          </field>
+      </record>-->
 
       <!-- Vista Form de Gato -->
       <record id="view_gato_form" model="ir.ui.view">
@@ -137,7 +148,8 @@
           <field name="model">gatos.info_medica</field>
           <field name="arch" type="xml">
               <graph string="Gráfico Info Médica">
-
+                <field name="name" type="row"/>
+                  <field name="enfermedad" type="measure"/>
               </graph>
           </field>
       </record>
@@ -178,7 +190,8 @@
           <field name="model">gatos.adopcion</field>
           <field name="arch" type="xml">
               <graph string="Gráfico Adopción">
-
+                <field name="gato" type="row"/>
+                  <field name="cliente" type="count"/>
               </graph>
           </field>
       </record>
