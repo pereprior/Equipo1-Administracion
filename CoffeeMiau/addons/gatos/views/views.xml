@@ -38,15 +38,13 @@
       </record>
 
       <!-- Vista Gráfico de Cliente-->
+      <!-- Vista de gráfico de Pere -->
       <record id="view_cliente_graph" model="ir.ui.view">
           <field name="name">cliente.graph</field>
           <field name="model">gatos.cliente</field>
           <field name="arch" type="xml">
               <graph string="Gráfico Clientes">
-                <field name="name" type="row"/>
-                <field name="edad" type="row" invisible="false"/>
                 <field name="signo_zodiacal" type="row" invisible="false"/>
-                <field name="adopcion" type="row" invisible="false"/>
               </graph>
           </field>
       </record>
@@ -100,7 +98,7 @@
       </record>
 
       <!-- Vista Gráfico de Gato -->
-      <record id="view_cliente_graph" model="ir.ui.view">
+      <record id="view_gato_graph" model="ir.ui.view">
           <field name="name">gato.graph</field>
           <field name="model">gatos.gato</field>
           <field name="arch" type="xml">
@@ -143,7 +141,7 @@
       </record>
 
       <!-- Vista Gráfico de Info Médica -->
-      <record id="view_cliente_graph" model="ir.ui.view">
+      <record id="view_infor_medica_graph" model="ir.ui.view">
           <field name="name">info_medica.graph</field>
           <field name="model">gatos.info_medica</field>
           <field name="arch" type="xml">
@@ -185,7 +183,7 @@
       </record>
 
       <!-- Vista Gráfico de Adocpión -->
-      <record id="view_cliente_graph" model="ir.ui.view">
+      <record id="view_adopcion_graph" model="ir.ui.view">
           <field name="name">adopcion.graph</field>
           <field name="model">gatos.adopcion</field>
           <field name="arch" type="xml">
