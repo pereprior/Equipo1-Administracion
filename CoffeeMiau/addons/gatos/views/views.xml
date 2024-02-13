@@ -97,19 +97,6 @@
           </field>
       </record>
 
-      <!-- Vista Gráfico de Gato -->
-      <record id="view_gato_graph" model="ir.ui.view">
-          <field name="name">gato.graph</field>
-          <field name="model">gatos.gato</field>
-          <field name="arch" type="xml">
-              <graph string="Gráfico Gatos" type="bar">
-                  <field name="name" type="row">
-                      <field name="edad" type="measure"/>
-                  </field>
-              </graph>
-          </field>
-      </record>
-
       <!-- Vista Form de Info Médica -->
       <record id="view_info_medica_form" model="ir.ui.view">
           <field name="name">info_medica.form</field>
@@ -199,13 +186,6 @@
           <field name="name">Clientes</field>
           <field name="res_model">gatos.cliente</field>
           <field name="view_mode">tree,form,graph</field>
-      </record>
-
-      <!-- Acción para abrir la vista Tree, Form y Graph de Gatos -->
-      <record id="action_gato" model="ir.actions.act_window">
-        <field name="name">Gato</field>
-        <field name="res_model">gatos.gato</field>
-        <field name="view_mode">tree,form,graph</field>
       </record>
 
       <!-- Acción para abrir la vista Tree, Form y Graph de Adopción -->
